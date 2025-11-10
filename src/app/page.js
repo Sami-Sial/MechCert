@@ -23,6 +23,8 @@ import {
   Clock,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import logo from "@/assets/logo.jpeg";
 
 export default function MechCertClone() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -128,18 +130,19 @@ export default function MechCertClone() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
+              <Image
+                src={logo}
+                alt="MechCert Logo"
+                width={48}
+                height={48}
+                className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+              />
               <div className="text-2xl sm:text-3xl font-black tracking-tight">
-                <span
-                  className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent"
-                  style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
-                >
+                <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">
                   Mech
                 </span>
-                <span
-                  className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"
-                  style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
-                >
+                <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                   Cert
                 </span>
               </div>
@@ -183,9 +186,13 @@ export default function MechCertClone() {
               >
                 Contact
               </a>
-              <button className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-4 py-1.5 rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold text-sm">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-4 py-1.5 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold text-sm"
+              >
                 Get Quote
-              </button>
+              </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -250,18 +257,17 @@ export default function MechCertClone() {
         </div>
       </nav>
 
-      {/* Hero Section with Animated Background */}
-      <div className="relative h-[calc(100vh-5rem)] overflow-hidden">
-        {/* Animated Background Images */}
+      {/* Hero Section */}
+      <div className="relative h-screen overflow-hidden">
         {heroImages.map((image, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 1 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{
               opacity: index === currentImage ? 1 : 0,
-              scale: index === currentImage ? 1.2 : 1,
+              scale: index === currentImage ? 1.1 : 1.05,
             }}
-            transition={{ duration: 3 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0"
             style={{
               backgroundImage: `url(${image})`,
@@ -270,52 +276,69 @@ export default function MechCertClone() {
             }}
           />
         ))}
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-800/85 to-cyan-900/90" />
-
-        {/* Content */}
         <div className="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center items-start pt-8 pb-20 sm:pb-8">
           <motion.div
             className="max-w-3xl text-white"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 leading-tight">
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Industrial Inspection And Testing Services In Pakistan
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-teal-100">
+            </motion.h1>
+            <motion.p
+              className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-teal-100"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
               Pakistan's leading third party inspection service provider in
               Testing, Inspection, Certification, Assurance, Supply Chain, and
               Project Execution.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0 20px 30px rgba(0,0,0,0.2)",
+                }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:shadow-2xl transition-all duration-300 font-semibold text-base sm:text-lg"
               >
                 Our Services
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.08,
+                  backgroundColor: "white",
+                  color: "#0d9488",
+                }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white/10 backdrop-blur-md text-white border-2 border-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-white hover:text-teal-900 transition-all duration-300 font-semibold text-base sm:text-lg"
               >
                 Contact Us
               </motion.button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
-
-        {/* Image Indicators */}
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 sm:gap-3">
           {heroImages.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => setCurrentImage(index)}
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.3 }}
+              whileTap={{ scale: 0.9 }}
               className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 index === currentImage ? "bg-white w-6 sm:w-8" : "bg-white/50"
               }`}
@@ -327,13 +350,18 @@ export default function MechCertClone() {
       {/* About Section */}
       <motion.div
         className="max-w-7xl mx-auto px-4 py-16 md:py-24"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
               About{" "}
               <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
@@ -361,25 +389,37 @@ export default function MechCertClone() {
               unmatched.
             </p>
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 15px 25px rgba(0,0,0,0.15)",
+              }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-teal-600 to-cyan-500 text-white px-6 sm:px-8 py-3 rounded-lg hover:shadow-xl transition-all duration-300 font-semibold"
             >
               Learn More
             </motion.button>
-          </div>
+          </motion.div>
           <div className="relative">
-            <img
+            <motion.img
               src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=600&fit=crop"
               alt="Industrial Inspection"
               className="rounded-2xl shadow-2xl w-full h-80 sm:h-96 object-cover"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             />
             <motion.div
               className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-gradient-to-r from-teal-500 to-cyan-500 text-white p-4 sm:p-6 rounded-xl shadow-xl max-w-[120px] sm:max-w-[150px]"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ scale: 0, rotate: -180, opacity: 0 }}
+              whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.6,
+                type: "spring",
+                stiffness: 100,
+              }}
             >
               <div className="text-3xl sm:text-4xl font-black">25+</div>
               <div className="text-xs sm:text-sm font-medium">
@@ -395,7 +435,7 @@ export default function MechCertClone() {
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -416,40 +456,71 @@ export default function MechCertClone() {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer hover:-translate-y-2"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg group cursor-pointer"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.15,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+                whileHover={{
+                  y: -15,
+                  boxShadow: "0 30px 50px rgba(0,0,0,0.18)",
+                  transition: { duration: 0.4 },
+                }}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-xl flex items-center justify-center mb-6"
+                  initial={{ rotate: 0 }}
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
                   <service.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition">
+                </motion.div>
+                <motion.h3
+                  className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition"
+                  initial={{ x: -20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.15 + 0.3 }}
+                >
                   {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
+                </motion.h3>
+                <motion.p
+                  className="text-gray-600 leading-relaxed mb-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: index * 0.15 + 0.4 }}
+                >
                   {service.description}
-                </p>
-                <div className="mt-4">
+                </motion.p>
+                <motion.div
+                  className="mt-4"
+                  initial={{ x: -30, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.15 + 0.5 }}
+                >
                   <span className="text-teal-500 font-semibold group-hover:underline inline-flex items-center gap-2">
                     Learn More{" "}
                     <ChevronDown className="w-4 h-4 rotate-[-90deg]" />
                   </span>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Statistics Section */}
+      {/* Statistics Section - Fixed & Animated */}
       <motion.div
         className="bg-gradient-to-r from-teal-700 to-cyan-600 text-white py-16"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1 }}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -461,15 +532,43 @@ export default function MechCertClone() {
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                className="group hover:scale-110 transition-transform duration-300"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
+                className="group"
+                initial={{ scale: 0, rotate: -180 }}
+                whileInView={{ scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.2,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                whileHover={{ scale: 1.15 }}
               >
-                <stat.icon className="w-12 h-12 mx-auto mb-4" />
-                <div className="text-5xl font-black mb-2">{stat.value}</div>
-                <div className="text-teal-100">{stat.label}</div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 + 0.3 }}
+                >
+                  <stat.icon className="w-12 h-12 mx-auto mb-4" />
+                </motion.div>
+                <motion.div
+                  className="text-5xl font-black mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 + 0.5 }}
+                >
+                  {stat.value}
+                </motion.div>
+                <motion.div
+                  className="text-teal-100"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: index * 0.2 + 0.6 }}
+                >
+                  {stat.label}
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -479,13 +578,19 @@ export default function MechCertClone() {
       {/* Clients Section */}
       <motion.div
         className="py-16 md:py-24 bg-white"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Our{" "}
               <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
@@ -495,17 +600,27 @@ export default function MechCertClone() {
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Trusted by leading organizations across Pakistan
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {clients.map((client, index) => (
               <motion.div
                 key={index}
-                className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 flex items-center justify-center text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                initial={{ opacity: 0, scale: 0.9 }}
+                className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 flex items-center justify-center text-center hover:shadow-lg transition-all duration-300"
+                initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 90,
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  rotateY: 10,
+                  boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                }}
               >
                 <div className="font-bold text-teal-800 text-lg">{client}</div>
               </motion.div>
@@ -517,13 +632,19 @@ export default function MechCertClone() {
       {/* Accreditations Section */}
       <motion.div
         className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-teal-50"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Accreditations &{" "}
               <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
@@ -534,22 +655,35 @@ export default function MechCertClone() {
               Our extensive accreditations and memberships are a testament to
               our unwavering commitment to quality, safety, and excellence.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {accreditations.map((accreditation, index) => (
               <motion.div
                 key={index}
-                className="flex items-center justify-center p-6 bg-white rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                initial={{ opacity: 0, scale: 0.8 }}
+                className="flex items-center justify-center p-6 bg-white rounded-xl hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.12,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                whileHover={{
+                  scale: 1.15,
+                  rotateX: 10,
+                  boxShadow: "0 20px 35px rgba(0,0,0,0.12)",
+                }}
               >
                 <div className="text-center">
-                  <div className="text-3xl font-black text-teal-700 mb-2">
+                  <motion.div
+                    className="text-3xl font-black text-teal-700 mb-2"
+                    whileHover={{ scale: 1.3 }}
+                  >
                     {accreditation.logo}
-                  </div>
+                  </motion.div>
                   <div className="text-sm text-gray-600 font-medium">
                     {accreditation.name}
                   </div>
@@ -563,13 +697,19 @@ export default function MechCertClone() {
       {/* News & Events Section */}
       <motion.div
         className="bg-white py-16 md:py-24"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               News &{" "}
               <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
@@ -580,19 +720,32 @@ export default function MechCertClone() {
               Stay Updated with MechCert. Explore the Latest Events, News, and
               Industry Insights That Drive Innovation and Excellence.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((item) => (
               <motion.div
                 key={item}
-                className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer hover:-translate-y-2"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: item * 0.1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: item * 0.2,
+                  type: "spring",
+                  stiffness: 80,
+                }}
+                whileHover={{
+                  y: -15,
+                  boxShadow: "0 30px 50px rgba(0,0,0,0.18)",
+                }}
               >
-                <div className="h-48 bg-gradient-to-br from-teal-600 to-cyan-500 flex items-center justify-center text-white relative overflow-hidden">
+                <motion.div
+                  className="h-48 bg-gradient-to-br from-teal-600 to-cyan-500 relative overflow-hidden"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <img
                     src={`https://images.unsplash.com/photo-${
                       item === 1
@@ -602,26 +755,46 @@ export default function MechCertClone() {
                         : "1530124566582-a618bc2615dc"
                     }?w=800&h=400&fit=crop`}
                     alt={`News ${item}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent" />
-                </div>
+                </motion.div>
                 <div className="p-6">
-                  <div className="text-sm text-teal-500 font-bold mb-2 flex items-center gap-2">
+                  <motion.div
+                    className="text-sm text-teal-500 font-bold mb-2 flex items-center gap-2"
+                    initial={{ x: -30, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: item * 0.2 + 0.3 }}
+                  >
                     <Clock className="w-4 h-4" />
                     Nov {item}, 2025
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition">
+                  </motion.div>
+                  <motion.h3
+                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition"
+                    initial={{ x: -30, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: item * 0.2 + 0.4 }}
+                  >
                     Industry Update {item}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
+                  </motion.h3>
+                  <motion.p
+                    className="text-gray-600 mb-4"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: item * 0.2 + 0.5 }}
+                  >
                     Latest developments in industrial inspection and testing
                     services across Pakistan.
-                  </p>
-                  <span className="text-teal-600 font-semibold group-hover:underline inline-flex items-center gap-2">
+                  </motion.p>
+                  <motion.span
+                    className="text-teal-600 font-semibold group-hover:underline inline-flex items-center gap-2"
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: item * 0.2 + 0.6 }}
+                  >
                     Read More{" "}
                     <ChevronDown className="w-4 h-4 rotate-[-90deg]" />
-                  </span>
+                  </motion.span>
                 </div>
               </motion.div>
             ))}
@@ -632,21 +805,34 @@ export default function MechCertClone() {
       {/* CTA Section */}
       <motion.div
         className="bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-600 text-white py-16 relative overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
         <div className="absolute inset-0 bg-black/10" />
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <motion.h2
+            className="text-4xl md:text-5xl font-black mb-4"
+            initial={{ y: -40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7 }}
+          >
             Ready to Get Started?
-          </h2>
-          <p className="text-xl mb-8 text-cyan-100">
+          </motion.h2>
+          <motion.p
+            className="text-xl mb-8 text-cyan-100"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
             Contact us today for reliable inspection and testing services
-          </p>
+          </motion.p>
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{
+              scale: 1.1,
+              boxShadow: "0 25px 40px rgba(0,0,0,0.2)",
+            }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-teal-600 px-8 sm:px-10 py-4 rounded-lg hover:shadow-2xl transition-all duration-300 font-bold text-lg"
           >
@@ -660,9 +846,18 @@ export default function MechCertClone() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="text-3xl font-black mb-4 tracking-tight">
-                <span className="text-teal-400">Mech</span>
-                <span className="text-cyan-400">Cert</span>
+              <div className="flex items-center gap-2 mb-4">
+                <Image
+                  src={logo}
+                  alt="MechCert Logo"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 object-contain"
+                />
+                <div className="text-3xl font-black tracking-tight">
+                  <span className="text-teal-400">Mech</span>
+                  <span className="text-cyan-400">Cert</span>
+                </div>
               </div>
               <p className="text-gray-400 mb-4">
                 Pakistan's leading third party inspection service provider.
@@ -677,7 +872,7 @@ export default function MechCertClone() {
                 <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center cursor-pointer hover:bg-teal-500 transition">
                   <Twitter className="w-5 h-5" />
                 </div>
-                <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center cursor-pointer hover:bg-teal-500 transition">
+                <div classNameName="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center cursor-pointer hover:bg-teal-500 transition">
                   <Instagram className="w-5 h-5" />
                 </div>
               </div>
