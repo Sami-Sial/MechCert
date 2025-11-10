@@ -4,7 +4,7 @@ export default function sitemap() {
       url: "https://mech-cert.vercel.app/",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: "https://mech-cert.vercel.app/about",
