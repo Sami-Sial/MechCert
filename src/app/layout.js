@@ -12,8 +12,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "MechCert",
-  description: "",
+  title: {
+    default: "MechCert | Mechanical Certification Platform",
+    template: "%s | MechCert",
+  },
+  description:
+    "Earn mechanical certifications online with MechCert. Learn, practice, and get certified with expert-designed courses and real-world projects.",
+  keywords: [
+    "mechanical certification",
+    "MechCert",
+    "online courses",
+    "engineering training",
+  ],
+  metadataBase: new URL("https://mech-cert.vercel.app"),
+  openGraph: {
+    title: "MechCert — Mechanical Certification Platform",
+    description:
+      "Learn, train, and get certified in mechanical engineering online.",
+    url: "https://mech-cert.vercel.app",
+    siteName: "MechCert",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MechCert preview image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MechCert",
+    description: "Online mechanical certification platform",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: "/favicon.png",
   },

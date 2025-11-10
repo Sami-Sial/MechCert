@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mech-cert.vercel.app/sitemap.xml
